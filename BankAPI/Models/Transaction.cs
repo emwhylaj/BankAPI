@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,7 +10,9 @@ namespace BankAPI.Models
     [Table("Transactions ")]
     public class Transaction
     {
+        [Key]
         public int Id { get; set; }
+
         public string TransactionUniqueReference { get; set; }
         public decimal TransactionAmount { get; set; }
         public TranStatus TransactionStatus { get; set; }

@@ -1,4 +1,6 @@
 using BankAPI.DAL;
+using BankAPI.Services;
+using BankAPI.Services.Implementation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,11 +30,13 @@ namespace BankAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<BankApiDbContext>(x => x.UseSqlServer(Configuration.GetConnectionString("BankApiDBConnection")));
+            services.AddDbContext<BankApiDbContext>(x => x.UseSqlServer(Configuration.GetConnectionString("DBConnection")));
             services.AddControllers();
+            services.AddScoped<IAccountService, AccountService>();
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "BankAPI", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "BankAPI", Version = "v1", Description = "Building Bank API is fun" });
             });
         }
 

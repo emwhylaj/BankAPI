@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BankAPI.Migrations
 {
-    public partial class initialMigration : Migration
+    public partial class migrationToDatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

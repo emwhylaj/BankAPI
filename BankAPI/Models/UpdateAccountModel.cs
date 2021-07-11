@@ -12,7 +12,7 @@ namespace BankAPI.Models
         public string Email { get; set; }
 
         [Required]
-        [RegularExpression(@"^[0-9]/d{4}$", ErrorMessage = "Pin must not be more than four digits")]
+        [RegularExpression(@"^[0-9]{4}$", ErrorMessage = "Pin must not be more than four digits")]
         public string Pin { get; set; }
 
         [Compare("Pin", ErrorMessage = "Pin does not match")]
